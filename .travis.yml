@@ -1,8 +1,6 @@
 language: python
 matrix:
   include:
-  - arch: arm64
-    python: 3.8
   - arch: amd64
     python: 3.8
 script: py.test
@@ -10,6 +8,7 @@ install: if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then pip install pathlib2; fi
 sudo: false
 before_deploy:
     # Set up git user name and tag this commit
+    - python setup.py bdist_wheel
     - git config --local user.name "mpmkp2020"
     - git config --local user.email "madhukarhbti@gmail.com"
     - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
