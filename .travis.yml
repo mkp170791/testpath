@@ -17,7 +17,7 @@ deploy:
   provider: releases
   api_key:
     secure: QSJP8gh/xY1bETlCz0pzqyW33j06tzzNujtUxmh0+kjgior1VdwJ16ErWoaHXPM6PVyKtscUfpWHppHT9cc4rFNekzszmmZRThBpke7/ElmLP048vxHn+iFu2v7D+Bw+orgI4syCC+6Qm83WMQLctgbAC4MAQpr+t9dymE1eHwgthpZBsL4kugy+eIZ5tehYXIEzi64qWprsR5CqCuC91eUKQbPE2W7wXmOOaNDE+l8MBZzOazXixfgmPoLuchnJbNW98Km6ufRcADPnrl+aS37fUO94hKwLNq0bVoPIrt/ctvRdGTnw3sqn+t/8oQm5+ng51lziab0fa9TBu0Y69I7mxk7UfY8Vm6ed5m5ksCjoJYiEzMPsxQNAQltCocWcjV2/rTTw2u3nG4xiaIPwtP+cEz6Ah0EHeSH6UGZnohihmZSmsGEYMgT9XeUKuZjIvfbrrlQYuI9AyEUm89ae3o8wrJ4yyn1WGaRV5eRyfkZP8AVaXVsuGfouo+NFxN7MAFRW68LVZaxl1XUSdXtSKaEBlRqOZRM8S7piwshd4LaJWejBtYqcB3nR9bRsE5M01OKOWXCVWKICLcYun8KQXSPUiqomzRUYHTqHhNuDwTdgHjpS7GUwfSOzxoRT+8J7jBHM9NUOV80IHfe/mJnjbYvVe0WwQPQNUIuJ+K1sOsg=
-  file: ./LICENSE
+  file: ./LICEN*
   on:
     repo: mpmkp2020/testpath
   skip_cleanup: 'true'
