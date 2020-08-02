@@ -1,25 +1,25 @@
 language: python
 matrix:
   include:
-    - arch: arm64
-      python: 2.7
-      python: 3.4
-      python: 3.5
-      python: 3.6
-      python: 3.7
-      python: 3.8
-    - arch: amd64
-      python: 2.7
-      python: 3.4
-      python: 3.5
-      python: 3.6
-      python: 3.7
-      python: 3.8
-
-# command to run tests
+  - arch: arm64
+    python: 3.8
+  - arch: amd64
+    python: 3.8
 script: py.test
-
 install: if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then pip install pathlib2; fi
-
-# Enable new Travis stack, should speed up builds
 sudo: false
+before_deploy:
+    # Set up git user name and tag this commit
+    - git config --local user.name "mpmkp2020"
+    - git config --local user.email "madhukarhbti@gmail.com"
+    - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+    - git tag $TRAVIS_TAG
+
+deploy:
+  provider: releases
+  api_key:
+    secure: QSJP8gh/xY1bETlCz0pzqyW33j06tzzNujtUxmh0+kjgior1VdwJ16ErWoaHXPM6PVyKtscUfpWHppHT9cc4rFNekzszmmZRThBpke7/ElmLP048vxHn+iFu2v7D+Bw+orgI4syCC+6Qm83WMQLctgbAC4MAQpr+t9dymE1eHwgthpZBsL4kugy+eIZ5tehYXIEzi64qWprsR5CqCuC91eUKQbPE2W7wXmOOaNDE+l8MBZzOazXixfgmPoLuchnJbNW98Km6ufRcADPnrl+aS37fUO94hKwLNq0bVoPIrt/ctvRdGTnw3sqn+t/8oQm5+ng51lziab0fa9TBu0Y69I7mxk7UfY8Vm6ed5m5ksCjoJYiEzMPsxQNAQltCocWcjV2/rTTw2u3nG4xiaIPwtP+cEz6Ah0EHeSH6UGZnohihmZSmsGEYMgT9XeUKuZjIvfbrrlQYuI9AyEUm89ae3o8wrJ4yyn1WGaRV5eRyfkZP8AVaXVsuGfouo+NFxN7MAFRW68LVZaxl1XUSdXtSKaEBlRqOZRM8S7piwshd4LaJWejBtYqcB3nR9bRsE5M01OKOWXCVWKICLcYun8KQXSPUiqomzRUYHTqHhNuDwTdgHjpS7GUwfSOzxoRT+8J7jBHM9NUOV80IHfe/mJnjbYvVe0WwQPQNUIuJ+K1sOsg=
+  file: dist/*
+  on:
+    repo: mpmkp2020/testpath
+  skip_cleanup: 'true'
